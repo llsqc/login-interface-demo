@@ -6,30 +6,44 @@ public class LoginPanel : BasePanel<LoginPanel>
 {
     public UIInput inputUsername;
     public UIInput inputPassword;
-    
+
     public UIButton btnRegister;
     public UIButton btnLogin;
-    
+
     public UIToggle togRemember;
     public UIToggle togAutoLogin;
+
     public override void Init()
     {
         btnRegister.onClick.Add(new EventDelegate(() =>
         {
             //TODO: 注册
             HideMe();
+
+            RegisterPanel.Instance.ShowMe();
         }));
-        
+
         btnLogin.onClick.Add(new EventDelegate(() =>
         {
             //TODO: 登录
-            LoginMgr.Instance.LoginData.username = inputUsername.value;
-            LoginMgr.Instance.LoginData.password = inputPassword.value;
-            LoginMgr.Instance.LoginData.bRemember = togRemember.value;
-            LoginMgr.Instance.LoginData.bAutoLogin = togAutoLogin.value;
-            LoginMgr.Instance.SaveLoginData();
+            if (LoginMgr.Instance.CheckInfo(inputUsername.value, inputPassword.value))
+            {
+                LoginMgr.Instance.LoginData.username = inputUsername.value;
+                LoginMgr.Instance.LoginData.password = inputPassword.value;
+                LoginMgr.Instance.LoginData.bRemember = togRemember.value;
+                LoginMgr.Instance.LoginData.bAutoLogin = togAutoLogin.value;
+                LoginMgr.Instance.SaveLoginData();
+
+                HideMe();
+            }
+
+            else
+            {
+                TipPanel.Instance.ShowMe();
+                TipPanel.Instance.ChangeInfo("用户名或密码错误");
+            }
         }));
-        
+
         togRemember.onChange.Add(new EventDelegate(() =>
         {
             //TODO: 记住密码
@@ -39,7 +53,7 @@ public class LoginPanel : BasePanel<LoginPanel>
                 togAutoLogin.value = false;
             }
         }));
-        
+
         togAutoLogin.onChange.Add(new EventDelegate(() =>
         {
             //TODO: 自动登陆
@@ -49,9 +63,9 @@ public class LoginPanel : BasePanel<LoginPanel>
                 togRemember.value = true;
             }
         }));
-        
+
         LoginData loginData = LoginMgr.Instance.LoginData;
-        
+
         togRemember.value = loginData.bRemember;
         togAutoLogin.value = loginData.bAutoLogin;
 
@@ -69,5 +83,11 @@ public class LoginPanel : BasePanel<LoginPanel>
         {
             //TODO: 自动登录
         }
+    }
+
+    public void SetInfo(string username, string password)
+    {
+        inputUsername.value = username;
+        inputPassword.value = password;
     }
 }
