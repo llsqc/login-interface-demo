@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 135
     width: 83
     height: 79
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 38
+    borderRight: 33
+    borderTop: 25
+    borderBottom: 28
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
@@ -175,10 +175,10 @@ MonoBehaviour:
     y: 66
     width: 69
     height: 64
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 23
+    borderRight: 40
+    borderTop: 16
+    borderBottom: 24
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

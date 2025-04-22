@@ -19,10 +19,10 @@ MonoBehaviour:
     y: 414
     width: 98
     height: 98
-    borderLeft: 12
-    borderRight: 14
-    borderTop: 13
-    borderBottom: 14
+    borderLeft: 30
+    borderRight: 30
+    borderTop: 34
+    borderBottom: 29
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
