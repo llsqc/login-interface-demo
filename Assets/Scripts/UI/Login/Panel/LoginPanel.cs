@@ -34,6 +34,8 @@ public class LoginPanel : BasePanel<LoginPanel>
                 LoginMgr.Instance.LoginData.bAutoLogin = togAutoLogin.value;
                 LoginMgr.Instance.SaveLoginData();
 
+                ServerPanel.Instance.ShowMe();
+                
                 HideMe();
             }
 
