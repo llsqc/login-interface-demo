@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 1
     width: 35
     height: 40
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 16
+    borderRight: 17
+    borderTop: 16
+    borderBottom: 22
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
