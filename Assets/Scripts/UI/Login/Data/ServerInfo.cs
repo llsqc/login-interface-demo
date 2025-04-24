@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ServerInfo
 {
-    public SerizlizerDictionary<string, Server> serverDic = new SerizlizerDictionary<string, Server>();
+    public SerizlizerDictionary<int, Server> serverDic = new SerizlizerDictionary<int, Server>();
 }
 
 public class Server
