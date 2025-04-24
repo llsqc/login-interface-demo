@@ -12,7 +12,7 @@ public class ServerItem : MonoBehaviour
 
     void Start()
     {
-        btn.onClick.Add(new EventDelegate(() => { }));
+        btn.onClick.Add(new EventDelegate(() => { SelectPanel.Instance.UpdatePanel(_beginIndex, _endIndex); }));
     }
 
     public void InitInfo(int beginIndex, int endIndex)

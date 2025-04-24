@@ -20,7 +20,7 @@ public class ServerChooseItem : MonoBehaviour
     {
         _nowInfo = info;
 
-        labName.text = info.id + "区" + info.name;
+        labName.text = $"{info.id}区 {info.name}";
         sprNew.gameObject.SetActive(info.isNew);
         sprState.gameObject.SetActive(true);
         switch (info.state)
