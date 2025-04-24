@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4347178376035731734}
   - component: {fileID: 5974630849497641866}
   m_Layer: 5
-  m_Name: Sprite
+  m_Name: sprIsNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 8062461505278586011}
   - component: {fileID: 7422137287493485118}
   - component: {fileID: -7073002818303475200}
+  - component: {fileID: 295042812077802289}
   m_Layer: 5
   m_Name: btnChooseServer
   m_TagString: Untagged
@@ -434,3 +435,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollView: {fileID: 0}
   draggablePanel: {fileID: 0}
+--- !u!114 &295042812077802289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909217226304072336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0646c334c1348c744b86a3768a019277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnChooseServer: {fileID: 7422137287493485118}
+  labName: {fileID: 3645133017584826989}
+  sprNew: {fileID: 5974630849497641866}
+  sprState: {fileID: 6652005779949699103}
