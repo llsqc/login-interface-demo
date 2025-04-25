@@ -31,6 +31,8 @@ public class SelectPanel : BasePanel<SelectPanel>
 
             serverItem.InitInfo(beginIndex, endIndex);
         }
+
+        HideMe();
     }
 
     public void UpdatePanel(int beginIndex, int endIndex)
@@ -55,5 +57,42 @@ public class SelectPanel : BasePanel<SelectPanel>
             chooseItem.InitInfo(nowInfo);
             _itemList.Add(serverItem);
         }
+    }
+
+    public override void ShowMe()
+    {
+        base.ShowMe();
+        if (LoginMgr.Instance.LoginData.lastServerID == 0)
+        {
+            labName.text = "请选择服务器";
+            sprState.gameObject.SetActive(false);
+        }
+        else
+        {
+            LoginMgr.Instance.ServerInfo.serverDic.TryGetValue(LoginMgr.Instance.LoginData.lastServerID, out Server info);
+
+            labName.text = $"{info.id}区 {info.name}";
+            sprState.gameObject.SetActive(true);
+            switch (info.state)
+            {
+                case 0:
+                    sprState.gameObject.SetActive(false);
+                    break;
+                case 1:
+                    sprState.spriteName = "ui_DL_liuchang_01";
+                    break;
+                case 2:
+                    sprState.spriteName = "ui_DL_fanhua_01";
+                    break;
+                case 3:
+                    sprState.spriteName = "ui_DL_huobao_01";
+                    break;
+                case 4:
+                    sprState.spriteName = "ui_DL_weihu_01";
+                    break;
+            }
+        }
+
+        UpdatePanel(1, 5 > LoginMgr.Instance.ServerInfo.serverDic.Count ? LoginMgr.Instance.ServerInfo.serverDic.Count : 5);
     }
 }

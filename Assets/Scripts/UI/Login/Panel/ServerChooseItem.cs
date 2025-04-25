@@ -13,7 +13,12 @@ public class ServerChooseItem : MonoBehaviour
 
     void Start()
     {
-        btnChooseServer.onClick.Add(new EventDelegate(() => { }));
+        btnChooseServer.onClick.Add(new EventDelegate(() =>
+        {
+            LoginMgr.Instance.LoginData.lastServerID = _nowInfo.id;
+            SelectPanel.Instance.HideMe();
+            ServerPanel.Instance.ShowMe();
+        }));
     }
 
     public void InitInfo(Server info)

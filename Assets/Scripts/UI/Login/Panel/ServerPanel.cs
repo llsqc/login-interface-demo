@@ -11,25 +11,38 @@ public class ServerPanel : BasePanel<ServerPanel>
     public UIButton btnBegin;
     public UIButton btnChange;
 
+    public UIButton btnBack;
+
     public override void Init()
     {
         btnChange.onClick.Add(new EventDelegate(() =>
         {
-            //TODO
+            SelectPanel.Instance.ShowMe();
             HideMe();
         }));
+        
         btnBegin.onClick.Add(new EventDelegate(() =>
         {
-            //TODO
+            LoginMgr.Instance.SaveLoginData();
             SceneManager.LoadScene("GameScene");
         }));
         
+        btnBack.onClick.Add(new EventDelegate(() =>
+        {
+            LoginPanel.Instance.ShowMe();
+            HideMe();
+        }));
+
         HideMe();
     }
 
     public override void ShowMe()
     {
         base.ShowMe();
-        //TODO
+
+        int id = LoginMgr.Instance.LoginData.lastServerID;
+        Server server = LoginMgr.Instance.ServerInfo.serverDic[id];
+
+        labInfo.text = server.name;
     }
 }

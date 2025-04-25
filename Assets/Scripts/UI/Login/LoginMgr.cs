@@ -51,4 +51,9 @@ public class LoginMgr
         if (!_registerData.registerInfo.TryGetValue(username, out var value)) return false;
         return value == password;
     }
+
+    public void ClearLoginData()
+    {
+        _loginData.lastServerID = 0;
+    }
 }

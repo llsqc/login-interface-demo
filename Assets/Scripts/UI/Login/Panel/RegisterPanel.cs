@@ -33,6 +33,8 @@ public class RegisterPanel : BasePanel<RegisterPanel>
                 LoginPanel.Instance.ShowMe();
                 LoginPanel.Instance.SetInfo(inputUsername.value, inputPassword.value);
                 
+                LoginMgr.Instance.ClearLoginData();
+                
                 HideMe();
             }
             else

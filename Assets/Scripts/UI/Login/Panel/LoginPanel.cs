@@ -17,15 +17,12 @@ public class LoginPanel : BasePanel<LoginPanel>
     {
         btnRegister.onClick.Add(new EventDelegate(() =>
         {
-            //TODO: 注册
             HideMe();
-
             RegisterPanel.Instance.ShowMe();
         }));
 
         btnLogin.onClick.Add(new EventDelegate(() =>
         {
-            //TODO: 登录
             if (LoginMgr.Instance.CheckInfo(inputUsername.value, inputPassword.value))
             {
                 LoginMgr.Instance.LoginData.username = inputUsername.value;
@@ -34,8 +31,15 @@ public class LoginPanel : BasePanel<LoginPanel>
                 LoginMgr.Instance.LoginData.bAutoLogin = togAutoLogin.value;
                 LoginMgr.Instance.SaveLoginData();
 
-                ServerPanel.Instance.ShowMe();
-                
+                if (LoginMgr.Instance.LoginData.lastServerID == 0)
+                {
+                    SelectPanel.Instance.ShowMe();
+                }
+                else
+                {
+                    ServerPanel.Instance.ShowMe();
+                }
+
                 HideMe();
             }
 
@@ -48,8 +52,6 @@ public class LoginPanel : BasePanel<LoginPanel>
 
         togRemember.onChange.Add(new EventDelegate(() =>
         {
-            //TODO: 记住密码
-
             if (!togRemember.value)
             {
                 togAutoLogin.value = false;
@@ -58,8 +60,6 @@ public class LoginPanel : BasePanel<LoginPanel>
 
         togAutoLogin.onChange.Add(new EventDelegate(() =>
         {
-            //TODO: 自动登陆
-
             if (togAutoLogin.value)
             {
                 togRemember.value = true;
@@ -83,7 +83,25 @@ public class LoginPanel : BasePanel<LoginPanel>
 
         if (loginData.bAutoLogin)
         {
-            //TODO: 自动登录
+            if (LoginMgr.Instance.CheckInfo(inputUsername.value, inputPassword.value))
+            {
+                if (LoginMgr.Instance.LoginData.lastServerID == 0)
+                {
+                    SelectPanel.Instance.ShowMe();
+                }
+                else
+                {
+                    ServerPanel.Instance.ShowMe();
+                }
+
+                HideMe();
+            }
+
+            else
+            {
+                TipPanel.Instance.ShowMe();
+                TipPanel.Instance.ChangeInfo("用户名或密码错误");
+            }
         }
     }
 
